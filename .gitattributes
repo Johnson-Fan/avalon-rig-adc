@@ -1,0 +1,25 @@
+#Application On C/C++ Project
+*.c   eol=crlf
+*.h   eol=crlf
+*.cpp eol=crlf
+*.bat eol=crlf
+*.s   eol=crlf
+*.asm eol=crlf
+*.hex eol=crlf
+
+#Application On C# Project
+*.cs          eol=crlf
+*.config      eol=crlf
+*.xaml        eol=crlf
+*.settings    eol=crlf
+*.vcproj text eol=crlf
+*.csproj text eol=crlf
+*.resx   text eol=crlf
+*.user   text eol=crlf
+*.sln    text eol=crlf
+*.jpg         binary
+*.png         binary
+*.ico         binary
+*.dll        -text
+*.txt         eol=crlf
+*.html        eol=crlf

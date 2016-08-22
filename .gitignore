@@ -1,0 +1,14 @@
+#Keil Project ignore file
+/Lst/*
+!/Lst/.gitkeep
+/Obj/*
+!/Obj/.gitkeep
+/Project/*
+!/Project/*.uvprojx
+!/Project/*.uvproj
+/*.WK3
+/*.SearchResults
+/*.RPI
+
+/Lib/CMSIS/index.html
+/Lib/FWLIB/Release_Notes.html
