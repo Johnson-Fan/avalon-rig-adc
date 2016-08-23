@@ -10,6 +10,8 @@
 
 #include "Time.h"
 #include "GPIO.h"
+#include "UART1.h"
+#include "Printf.h"
 
 #endif
 
