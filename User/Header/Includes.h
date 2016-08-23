@@ -8,5 +8,7 @@
 #include "stm32f10x_conf.h"
 #include "config.h"
 
+#include "Time.h"
+
 #endif
 

@@ -157,46 +157,6 @@ void SysTick_Handler(void)
   * @}
   */
 
-
-void USART1_IRQHandler(void)
-{
-	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
-	{
-		USART_ITConfig(USART1, USART_IT_RXNE, DISABLE);
-	}
-
-	if(USART_GetITStatus(USART1, USART_IT_TXE) != RESET)
-	{
-		USART_ITConfig(USART1, USART_IT_TXE, DISABLE);
-		USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
-	}
-}
-
-
-void USART2_IRQHandler(void)
-{
-	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
-	{
-		USART_ITConfig(USART2, USART_IT_RXNE, DISABLE);
-	}
-
-	if(USART_GetITStatus(USART2, USART_IT_TXE) != RESET)
-	{
-		USART_ITConfig(USART2, USART_IT_TXE, DISABLE);
-		USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
-	}
-}
-
-void TIM2_IRQHandler(void)
-{
-	if (TIM_GetITStatus(TIM2,TIM_IT_Update) != RESET)
-	{
-		;
-	}
-
-	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-}
-
 void TIM3_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM3,TIM_IT_Update) != RESET)
