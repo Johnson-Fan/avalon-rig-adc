@@ -22,8 +22,8 @@ typedef enum
 } I2c_State;
 
 extern void i2c_init(void);
-extern u8 i2c_read_single_byte(u8 addr,u8 cmd,u8 * data);
-extern u8 i2c_write_single_byte(u8 addr,u8 cmd,u8 * data);
+extern u8 i2c_read_single_byte(u8 addr, u8 cmd, vu8 * data);
+extern u8 i2c_write_single_byte(u8 addr, u8 cmd, vu8 * data);
 
 #endif
 

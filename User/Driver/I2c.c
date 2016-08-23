@@ -155,7 +155,7 @@ void i2c_init(void)
 	GPIO_SetBits(IIC_GPIO_PORT, IIC_SDA_GPIO_PIN);
 }
 
-u8 i2c_read_single_byte(u8 addr, u8 cmd, u8 *data)
+u8 i2c_read_single_byte(u8 addr, u8 cmd, vu8 *data)
 {
 	u8 ack = 0;
 
@@ -183,7 +183,7 @@ u8 i2c_read_single_byte(u8 addr, u8 cmd, u8 *data)
 	return I2C_OK;
 }
 
-u8 i2c_write_single_byte(u8 addr, u8 cmd, u8 *data)
+u8 i2c_write_single_byte(u8 addr, u8 cmd, vu8 *data)
 {
 	u8 ack = 0;
 
