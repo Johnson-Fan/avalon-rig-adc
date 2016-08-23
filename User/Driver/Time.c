@@ -1,6 +1,8 @@
 #include "Includes.h"
 
 static u32 timer_tick_cnt = 0;
+static vu8 timer_input_single_state = 0;
+static vu8 timer_input_single_valid = 0;
 
 /* Time interval 0.5ms */
 static void InitTime2(void)
@@ -45,6 +47,14 @@ void TIM2_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM2,TIM_IT_Update) != RESET)
 	{
+		if ((!get_input_single()) && (timer_input_single_state)) {
+			timer_input_single_state = 0;
+			timer_input_single_valid = 1;
+		} else if ((get_input_single()) && (!timer_input_single_state)) {
+			timer_input_single_state = 1;
+			timer_input_single_valid = 1;
+		}
+
 		if (timer_tick_cnt != 0)
 		{
 			timer_tick_cnt--;
@@ -64,5 +74,16 @@ void delay(u32 delay_hms)
 void timer_init(void)
 {
 	InitTime2();
+	timer_input_single_state = get_input_single();
+}
+
+u8 get_adc_switch_state(void)
+{
+	return timer_input_single_valid;
+}
+
+void clear_adc_switch_state(void)
+{
+	timer_input_single_valid = 0;
 }
 

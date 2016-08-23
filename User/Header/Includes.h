@@ -9,6 +9,7 @@
 #include "config.h"
 
 #include "Time.h"
+#include "GPIO.h"
 
 #endif
 
