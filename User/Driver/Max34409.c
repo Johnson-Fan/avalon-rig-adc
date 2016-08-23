@@ -10,6 +10,8 @@ void read_max34409_adc_data(void)
 	i2c_read_single_byte(MAX34409_ADDR, ADC4_CMD, &max34409_data.adc4);
 }
 
+/* when use can open */
+#if 0
 static void read_max34409_oct_data(void)
 {
 	i2c_read_single_byte(MAX34409_ADDR, OCT1_CMD, &max34409_data.oct1);
@@ -80,4 +82,5 @@ static void read_max34409_dcww_data(void)
 {
 	i2c_read_single_byte(MAX34409_ADDR, DCWW_CMD, &max34409_data.dcww);
 }
+#endif
 
