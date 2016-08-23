@@ -12,6 +12,7 @@
 #include "GPIO.h"
 #include "UART1.h"
 #include "Printf.h"
+#include "I2c.h"
 
 #endif
 
