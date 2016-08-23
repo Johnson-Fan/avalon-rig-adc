@@ -13,6 +13,7 @@
 #include "UART1.h"
 #include "Printf.h"
 #include "I2c.h"
+#include "ADC.h"
 #include "Max34409.h"
 
 #endif

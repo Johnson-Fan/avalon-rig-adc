@@ -44,14 +44,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\</OutputDirectory>
+          <OutputDirectory>..\Obj\</OutputDirectory>
           <OutputName>avalon-rig-adc</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\</ListingPath>
+          <ListingPath>..\Lst\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -569,6 +569,36 @@
               <FileName>Time.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\Driver\Time.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>Printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\Printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\UART1.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\I2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>Max34409.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\Max34409.c</FilePath>
             </File>
           </Files>
         </Group>
