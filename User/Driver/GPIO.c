@@ -53,3 +53,26 @@ u8 get_input_single(void)
 	return GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_10);
 }
 
+void led_green_blink(void)
+{
+	static u8 state = 0;
+
+	delay(300);
+
+	state = !state;
+	if (state)
+		set_led(LED_GREEN, LED_ON);
+	else
+		set_led(LED_GREEN, LED_OFF);
+}
+
+void led_green_on(void)
+{
+	set_led(LED_GREEN, LED_ON);
+}
+
+void led_green_off(void)
+{
+	set_led(LED_GREEN, LED_OFF);
+}
+

@@ -8,5 +8,9 @@ typedef float  f32;
 #define CURRENT_STD_VALUE 100.0f /* 10mv ÷0.1Ω*/
 #define CURRENT_K         10
 
+#define PLL_HL    30
+#define IO_HL     30
+#define CORE_HL   50
+
 #endif
 

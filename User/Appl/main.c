@@ -41,6 +41,7 @@ int main(void)
 	{
 		if (get_adc_switch_state()) {
 			clear_adc_switch_state();
+			led_green_off();
 			set_led(LED_YELLOW, LED_ON);
 			for (i = 0; i < SAMPLE_COUNT; i++) {
 				read_max34409_adc_data();
@@ -61,9 +62,9 @@ int main(void)
 			adc_avg[5] = get_adc_avg(adc_buf[5], SAMPLE_COUNT);
 
 			if (adc_avg[4] > adc_avg[5])
-				vol_buf[4] = (adc_avg[4] - adc_avg[5]) * 3.3 / 4096.0 * CURRENT_K;
+				vol_buf[4] = (adc_avg[4] - adc_avg[5]) * 3.3 / (4096.0 * 0.066);
 			else
-				vol_buf[4] = (adc_avg[5] - adc_avg[4]) * 3.3 / 4096.0 * CURRENT_K;
+				vol_buf[4] = (adc_avg[5] - adc_avg[4]) * 3.3 / (4096.0 * 0.066);
 
 			printf("VDDIOA: %.00f\r\n", vol_buf[0]);
 			printf("VDDIOB: %.00f\r\n", vol_buf[1]);
@@ -73,5 +74,31 @@ int main(void)
 
 			set_led(LED_YELLOW, LED_OFF);
 		}
+
+		if (vol_buf[0] >= IO_HL)
+			led_green_blink();
+		else
+			led_green_on();
+
+		if (vol_buf[1] >= IO_HL)
+			led_green_blink();
+		else
+			led_green_on();
+
+		if (vol_buf[2] >= PLL_HL)
+			led_green_blink();
+		else
+			led_green_on();
+
+		if (vol_buf[3] >= IO_HL)
+			led_green_blink();
+		else
+			led_green_on();
+
+		if (vol_buf[4] >= CORE_HL)
+			led_green_blink();
+		else
+			led_green_on();
 	}
 }
+

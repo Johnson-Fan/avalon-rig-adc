@@ -11,6 +11,9 @@
 extern void gpio_init(void);
 extern void set_led(u8 led_type, u8 led_state);
 extern u8 get_input_single(void);
+extern void led_green_blink(void);
+extern void led_green_on(void);
+extern void led_green_off(void);
 
 #endif
 
