@@ -14,6 +14,10 @@ extern u8 get_input_single(void);
 extern void led_green_blink(void);
 extern void led_green_on(void);
 extern void led_green_off(void);
+void led_yellow_on(void);
+void led_yellow_off(void);
+void led_red_on(void);
+void led_red_off(void);
 
 #endif
 

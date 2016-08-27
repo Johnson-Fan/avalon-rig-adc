@@ -1,8 +1,10 @@
 #include "Includes.h"
 
-static u32 timer_tick_cnt = 0;
+static vu32 timer_tick_cnt = 0;
 static vu8 timer_input_single_state = 0;
 static vu8 timer_input_single_valid = 0;
+static vu8 timer_blink_state = 0;
+static vu32 timer_blink_cnt = 0;
 
 /* Time interval 0.5ms */
 static void InitTime2(void)
@@ -56,8 +58,11 @@ void TIM2_IRQHandler(void)
 		}
 
 		if (timer_tick_cnt != 0)
-		{
 			timer_tick_cnt--;
+
+		if (++timer_blink_cnt > TIMER_BLINK_CNT_MAX) {
+			timer_blink_cnt = 0;
+			timer_blink_state = !timer_blink_state;
 		}
 	}
 
@@ -85,5 +90,10 @@ u8 get_adc_switch_state(void)
 void clear_adc_switch_state(void)
 {
 	timer_input_single_valid = 0;
+}
+
+u8 get_led_blink_state(void)
+{
+	return timer_blink_state;
 }
 

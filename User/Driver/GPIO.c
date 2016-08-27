@@ -55,12 +55,7 @@ u8 get_input_single(void)
 
 void led_green_blink(void)
 {
-	static u8 state = 0;
-
-	delay(300);
-
-	state = !state;
-	if (state)
+	if (get_led_blink_state())
 		set_led(LED_GREEN, LED_ON);
 	else
 		set_led(LED_GREEN, LED_OFF);
@@ -74,5 +69,25 @@ void led_green_on(void)
 void led_green_off(void)
 {
 	set_led(LED_GREEN, LED_OFF);
+}
+
+void led_yellow_on(void)
+{
+	set_led(LED_YELLOW, LED_ON);
+}
+
+void led_yellow_off(void)
+{
+	set_led(LED_YELLOW, LED_OFF);
+}
+
+void led_red_on(void)
+{
+	set_led(LED_RED, LED_ON);
+}
+
+void led_red_off(void)
+{
+	set_led(LED_RED, LED_OFF);
 }
 

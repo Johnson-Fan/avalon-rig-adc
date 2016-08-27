@@ -3,6 +3,7 @@
 static u16 adc_buf[ADC_COUNT][SAMPLE_COUNT];
 static f32 vol_buf[ADC_COUNT];
 static u16 adc_avg[ADC_COUNT];
+static u8  adc_finish = 0;
 
 u16 get_adc_avg(u16 *data, u8 len)
 {
@@ -36,13 +37,15 @@ int main(void)
 	adc_init();
 	timer_init();
 
-	set_led(LED_GREEN, LED_ON);
 	while (1)
 	{
 		if (get_adc_switch_state()) {
 			clear_adc_switch_state();
 			led_green_off();
-			set_led(LED_YELLOW, LED_ON);
+			led_yellow_on();
+
+			adc_finish = 0;
+
 			for (i = 0; i < SAMPLE_COUNT; i++) {
 				read_max34409_adc_data();
 				adc_buf[0][i] = max34409_data.adc1;
@@ -51,6 +54,7 @@ int main(void)
 				adc_buf[3][i] = max34409_data.adc4;
 				adc_buf[4][i] = SamplingData.adc1;
 				adc_buf[5][i] = SamplingData.adc2;
+				delay(4);
 			}
 
 			for (i = 0; i < 4; i++) {
@@ -72,33 +76,36 @@ int main(void)
 			printf("VDDTOP: %.00f\r\n", vol_buf[3]);
 			printf("VIOUT:  %.00f\r\n", vol_buf[4]);
 
-			set_led(LED_YELLOW, LED_OFF);
+			adc_finish = 1;
+			led_yellow_off();
 		}
 
-		if (vol_buf[0] >= IO_HL)
-			led_green_blink();
-		else
-			led_green_on();
+		if (adc_finish) {
+			if (vol_buf[0] >= IO_HL)
+				led_green_blink();
+			else if (vol_buf[0] > 0)
+				led_green_on();
 
-		if (vol_buf[1] >= IO_HL)
-			led_green_blink();
-		else
-			led_green_on();
+			if (vol_buf[1] >= IO_HL)
+				led_green_blink();
+			else if (vol_buf[1] > 0)
+				led_green_on();
 
-		if (vol_buf[2] >= PLL_HL)
-			led_green_blink();
-		else
-			led_green_on();
+			if (vol_buf[2] >= PLL_HL)
+				led_green_blink();
+			else if (vol_buf[2] > 0)
+				led_green_on();
 
-		if (vol_buf[3] >= IO_HL)
-			led_green_blink();
-		else
-			led_green_on();
+			if (vol_buf[3] >= IO_HL)
+				led_green_blink();
+			else if (vol_buf[3] > 0)
+				led_green_on();
 
-		if (vol_buf[4] >= CORE_HL)
-			led_green_blink();
-		else
-			led_green_on();
+			if (vol_buf[4] >= CORE_HL)
+				led_green_blink();
+			else if (vol_buf[4] > 0)
+				led_green_on();
+		}
 	}
 }
 
